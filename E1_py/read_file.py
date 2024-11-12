@@ -1,6 +1,6 @@
 import numpy as np
 
-def read_row(filename):
+def read_column(filename):
     '''
     Reads row of numbers from file
     :param filename: name of file with numbers

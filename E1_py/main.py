@@ -6,6 +6,12 @@ import read_file
 from matplotlib import cm
 
 def makeplot(position,angle):
+    '''
+    Function to make 3D surface plot of potential in XY
+    :param position: position of view
+    :param angle: angle of view
+    :return: Axes object, which constructs 3D surface plot
+    '''
     fig, ax = plt.subplots(subplot_kw={'projection': '3d'})
     surf = ax.plot_surface(y, x, phi, cmap = cm.hsv)
     fig.colorbar(surf, shrink=0.5, aspect=5, label=r'rozkład $\varphi$ w obszarze $XY$')
@@ -16,7 +22,7 @@ def makeplot(position,angle):
     return ax
 
 x = read_file.read_line('x_collected.txt')
-y = read_file.read_row('y_collected.txt')
+y = read_file.read_column('y_collected.txt')
 phi = read_file.read_matrix('phi_collected.txt')
 e_min = np.gradient(phi, y, x)
 e_x = -e_min[1]
